@@ -1,25 +1,26 @@
 /* Adapted from HW 5*/
-import { MongoClient } from "mongodb";
-
+MongoClient = require('mongodb').MongoClient
 /* Connect to MongoDB */
-ATLAS_URI = 'mongodb+srv://webdev:webdev@catalog.qaasjwh.mongodb.net/?retryWrites=true&w=majority'
+const ATLAS_URI = 'mongodb+srv://webdev:webdev@catalog.qaasjwh.mongodb.net/?retryWrites=true&w=majority'
 const client = new MongoClient(ATLAS_URI);
 let conn;
-try {
-  conn = await client.connect();
-} catch(e) {
-  console.error(e);
+let db;
+
+async function start() {
+    try {
+        conn = await client.connect();
+    } catch(e) {
+        console.error(e);
+    }
+    db = conn.db("catalog");
 }
-let db = conn.db("catalog");
+
 
 async function get_catalog() {
-    let collection = await db.collection("posts");
-    let catalog = await collection.find({})
-    .limit(50)
-    .toArray();
+    let collection = await db.collection("catalog");
+    let catalog = await collection.find({}).toArray();
+    return catalog
 }
-
-export default db;
 
 const express = require('express')
 const port = 3002
@@ -30,26 +31,25 @@ app.use(cors());
 app.use(express.json());
 
 
-app.get('/posts', (req, res) => {
-  res.send(Object.values(data))
+//Get the store's catalog
+app.get('/catalog', (req, res) => {
+    console.log("Client requested catalog!")
+    res.send(get_catalog())
 })
 
-app.post('/post', (req, res) => {
-  if (data[req.body.id]) {
-    throw new Error("Post exists!")
-  }
-  const newPost = {id:parseInt(req.body.id, 10), title: req.body.title, body: req.body.body, comments: []}
-  data[req.body.id] = newPost
-  res.send(newPost)
-  console.log(newPost)
+//Client makes an order.
+app.post('/order', async (req, res) => {
+    console.log("Client made an order: ");
+    console.log(req.body);
+    let coll = await db.collection("orders")
+
+    const result = await coll.insert(req.body);
+    console.log(result);
 })
 
-app.post('/post/:postId/comment', (req, res) => {
-  const post = data[req.params.postId]
-  post.comments = [...post.comments, req.body.newComment]
-  res.send(post)
-})
-
-app.listen(port, () => {
-  console.log(`Block Server listening at http://localhost:${port}`)
+app.listen(port, async () => {
+    await start();
+    console.log("Bbay server connected to mongo database! Catalog currently looks like: ")
+    console.log(await get_catalog())
+    console.log(`\nBbay Server listening at http://localhost:${port}`)
 })
