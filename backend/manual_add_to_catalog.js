@@ -2,17 +2,21 @@
 //the following object into our catalog. Note that it just
 //inserts, doesn't redo.
 
-const { MongoClient } = require("mongodb");
+import { MongoClient } from "mongodb";
 
 /* Connect to MongoDB */
-ATLAS_URI = 'mongodb+srv://webdev:webdev@catalog.qaasjwh.mongodb.net/?retryWrites=true&w=majority'
+const ATLAS_URI = 'mongodb+srv://webdev:webdev@catalog.qaasjwh.mongodb.net/?retryWrites=true&w=majority'
 const client = new MongoClient(ATLAS_URI);
 
 const catalog_items = [
-  {name: "WDB Shirt", price: 15.00, quantity: 100},
-  {name: "WDB Pin", price: 15.00, quantity: 100},
-  {name: "WDB Hat", price: 15.00, quantity: 100},
-  {name: "WDB Sticker", price: 15.00, quantity: 100},
+  {name: "shirt", price: 15.00, quantity: 100},
+  {name: "pin", price: 3.00, quantity: 100},
+  {name: "cap", price: 35.00, quantity: 100},
+  {name: "sticker", price: 2.00, quantity: 100},
+  {name: "shirt", price: 31.00, quantity: 100},
+  {name: "pin", price: 8.00, quantity: 100},
+  {name: "cap", price: 54.00, quantity: 100},
+  {name: "sticker", price: 1.00, quantity: 100},
 ];
 
 async function run() {
