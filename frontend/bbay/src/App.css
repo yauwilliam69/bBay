@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+/* navbar css*/
+nav {
+  background-color: #ccbcbc;
+  color: #130404;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+.left {
+  justify-content: flex-start;
+}
+.right {
+  justify-content: flex-end;
+}
+li {
+  margin: 10px 15px;
+}
+
+a {
+  color: #060101;
+  font-size: 25px;
+  text-decoration: none;
+}

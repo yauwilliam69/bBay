@@ -35,8 +35,16 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Navbar/> */}
-      <h1>Bbay</h1>
+      <nav>
+      <ul class='left'>
+        <li><a href="/">bBay</a></li>
+      </ul>
+      <ul class = 'right'>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href='viewcart.html'>View Cart</a></li>
+      </ul>
+    </nav>
+      <h1>bBay</h1>
       <Catalog addToCart={addToCart}/>
     </div>
   );
