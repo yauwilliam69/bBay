@@ -10,6 +10,15 @@ const Cart = (props) => {
         total += subtotal
     }
     console.log("The generated cart looks like", cartItems)
+    if (cartItems.length == 0) {
+        return (
+            <div>
+                <h2>My Cart</h2>
+                <h3>Its empty!</h3>
+                <h3>Add items to fund WDB's trip to Hawaii 😢</h3>
+            </div>
+        )
+    } 
     return (
         <div>
             <h2>My Cart</h2>
