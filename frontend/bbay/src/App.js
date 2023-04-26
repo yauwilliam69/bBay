@@ -2,6 +2,8 @@ import React, {useEffect, useState } from "react";
 import logo from './logo.svg';
 import './App.css';
 import Catalog from './Components/Catalog';
+import Navbar from './Components/Navbar';
+
 
 function App() {
   const [cart, setCart] = useState({});
@@ -35,8 +37,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Navbar/> */}
-      <h1>Bbay</h1>
+      <Navbar cart={cart}/>
       <Catalog addToCart={addToCart}/>
     </div>
   );

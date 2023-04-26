@@ -1,0 +1,85 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    /* background-color: #f8f8f8; */
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 200%;
+    border-bottom: 3px solid #ccc;
+    margin-bottom: 10px;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+
+.logo {
+    color: rgb(13, 13, 13);
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    width: 50px; /* or whatever width you want */
+    height: 50px; /* or whatever height you want */
+    text-align: center;
+    overflow-x: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-container.open {
+    transform: translateX(-15vw);
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+    padding: 0px;
+}
+
+.button:hover {
+    background-color: #ccc;
+    color: #fff;
+}
+
+.cart-image {
+    width: 100%;
+    height: 100%;
+}
+
+.cart-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: width 0.5s;
+    border-left: 3px solid #ccc;
+}
+  
+.cart-container.open {
+    width: 15vw;
+}
+
+a {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,25 @@
+li {
+    font-family: Inter;
+    font-style: normal;
+    font-size: 75%;
+    text-align: left;
+}
+
+h2 {
+    text-decoration: underline;
+}
+
+.order-button {
+    width: 60%;
+    height: 30px;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    background: #D9D9D9;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50%;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+}
